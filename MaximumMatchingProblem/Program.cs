@@ -10,6 +10,7 @@ namespace MaximumMatchingProblem
     {
         static void Main(string[] args)
         {
+            HopcroftKarp hopcroftKarp = new HopcroftKarp(@"\input.txt");
         }
     }
 }
