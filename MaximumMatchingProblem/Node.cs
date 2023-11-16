@@ -8,5 +8,9 @@ namespace MaximumMatchingProblem
 {
     class Node
     {
+        public int index;
+        public bool matched;
+        public NodeType nodeType;
+        public Dictionary<Node, Flow> neighbours = new Dictionary<Node, Flow>();
     }
 }

@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BipartiteGraph.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Flow.cs" />
     <Compile Include="Hopcroft–Karp.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
