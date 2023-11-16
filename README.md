@@ -23,6 +23,7 @@ The input describes a bipartite graph , in the following format:
 
 ```
 <img width="284" alt="283612789-fb765e5f-ae52-4bc1-b0ed-55a03aa8d58b" src="https://github.com/Otasmacour/Maximum-matching-problem/assets/111227700/6b912c8e-a998-4186-b785-c01711f13b1a">
+
 # What does the output look like
 
 - On the first line is the result, that tells us, what is the maximum matching in the graph
