@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MaximumMatchingProblem
 {
-    internal class Hopcroft_Karp
+    class Hopcroft_Karp
     {
     }
 }
