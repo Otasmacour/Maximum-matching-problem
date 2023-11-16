@@ -11,3 +11,31 @@ The "maximum matching" problem is to find the largest possible set of edges betw
 
 # Hopcroft–Karp algorithm
 The Hopcroft-Karp algorithm is used to find the maximum matching in a bipartite graph. It starts with an empty pairing and gradually finds paths that increase the size of the pairing. It uses BFS to find alternate paths and DFS to augment them. The algorithm iterates until alternate paths are found. For this problem, it is always given between which vertices an edge can lead.
+
+# What the input should look like
+The input describes a bipartite graph , in the following format:
+- On the first line is the number of problems (the right side nodes)
+- On the second line is the n number of agents (the left side nodes)
+- On n lines are numbers e, that tell, how many edges are coming out of the nth node, followed by the e Indexes of the right vertexes, where the edge is pointing
+# Example of correct input
+```txt
+3
+3
+2 0 2
+1 1
+1 0
+```
+# What does the output look like
+- On the first line is the result, that tells us, what is the maximum matching in the graph
+- The e lines (number of edges in the graph) contain information that informs us about which edges are used
+# What the output for the above input looks like
+```txt
+3
+From 0 to 0' - False
+From 0 to 2' - True
+From 1 to 1' - True
+From 2 to 0' - True
+```
+
+
+
