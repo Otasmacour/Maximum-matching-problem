@@ -9,4 +9,4 @@ The Hopcroft-Karp algorithm is used to find the maximum matching in a bipartite 
 
 
 <img width="284" alt="283612789-fb765e5f-ae52-4bc1-b0ed-55a03aa8d58b" src="https://github.com/Otasmacour/Maximum-matching-problem/assets/111227700/c52fca16-28ab-4dd1-8d38-39e3de31d855">
-<img width="284" alt="graph1" src="https://github.com/Otasmacour/Maximum-matching-problem/assets/111227700/a49c94c5-f395-4133-8ffd-c286ab35e93b">
+<img width="290" alt="graph1" src="https://github.com/Otasmacour/Maximum-matching-problem/assets/111227700/a49c94c5-f395-4133-8ffd-c286ab35e93b">
