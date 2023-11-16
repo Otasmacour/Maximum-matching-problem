@@ -9,23 +9,62 @@ namespace MaximumMatchingProblem
 {
     class HopcroftKarp
     {
-        List<Node> unMatchedNodes;
+        Stack<Node> unMatchedNodes;
         BipartiteGraph bipartiteGraph;
         public HopcroftKarp(string inputPath)
         {
             bipartiteGraph = new BipartiteGraph(Directory.GetParent(Environment.CurrentDirectory)?.Parent?.FullName + inputPath);
-            unMatchedNodes = new List<Node>(bipartiteGraph.leftNodes);
+            unMatchedNodes = new Stack<Node>(bipartiteGraph.leftNodes);
             Solve();
+            PrintFlows(bipartiteGraph.leftNodes);
+            
+        }
+        void PrintFlows(List<Node> nodes)
+        {
+            foreach (Node node in nodes)
+            {
+                foreach (var item in node.neighbours)
+                {
+                    Console.WriteLine("From " + node.index.ToString() + " to " + item.Key.index.ToString() + " - " + item.Value.isUsed.ToString());
+                }
+            }
         }
         public int Solve()
         {
-            Node unMatchedNode = unMatchedNodes[0];
-            var result = BFS(unMatchedNode);
-            if (result.pathFound)
+            while(unMatchedNodes.Count > 0)
             {
-                Path(result.depths, result.unMatchedRightSideNode, unMatchedNode);
+                Node unMatchedNode = unMatchedNodes.Pop();
+                var result = BFS(unMatchedNode);
+                if (result.pathFound)
+                {
+                    List<Node> list = Path(result.depths, result.unMatchedRightSideNode, unMatchedNode);
+                    UpdatePath(list);
+                    //foreach(Node node in list)
+                    //{
+                    //    Console.WriteLine(node.index);
+                    //}
+                }
             }
             return 1;
+        }
+        static void UpdatePath(List<Node> nodes)
+        {
+            nodes[0].matched = true;
+            nodes[nodes.Count - 1].matched = true;
+            for(int i = 0; i < nodes.Count - 1; i++)
+            {
+                Node start = nodes[i];
+                Node destination = nodes[i + 1];
+                Flow flow = start.neighbours[destination];
+                if(flow.isUsed)
+                {
+                    flow.isUsed = false;
+                }
+                else
+                {
+                    flow.isUsed = true;
+                }
+            }
         }
         static List<Node> Path(Dictionary<Node, int> depths, Node unMatchedRightSideNode, Node unMatchedLeftSideNode)
         {
