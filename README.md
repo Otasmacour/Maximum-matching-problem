@@ -1,6 +1,4 @@
 # Maximum-matching-problem
-Solving this problem with different algorithms.
-
 The "maximum matching" problem is one of the problems in graph theory and specifically concerns bipartite graphs. First, I will explain some basic concepts:
 
 Bipartite graph: A graph whose vertices can be partitioned into two disjoint sets such that all edges lead from one set to the other.
