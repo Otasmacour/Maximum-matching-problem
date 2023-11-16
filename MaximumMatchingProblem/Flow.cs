@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MaximumMatchingProblem
 {
-    internal class Flow
+    class Flow
     {
+        public bool isUsed;
     }
 }
