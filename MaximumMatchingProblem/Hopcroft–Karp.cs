@@ -15,6 +15,38 @@ namespace MaximumMatchingProblem
         {
             bipartiteGraph = new BipartiteGraph(Directory.GetParent(Environment.CurrentDirectory)?.Parent?.FullName + inputPath);
             unMatchedNodes = new List<Node>(bipartiteGraph.leftNodes);
+            Solve();
+        }
+        public int Solve()
+        {
+            Node unMatchedNode = unMatchedNodes[0];
+            var result = BFS(unMatchedNode);
+            if (result.pathFound)
+            {
+                Path(result.depths, result.unMatchedRightSideNode, unMatchedNode);
+            }
+            return 1;
+        }
+        static List<Node> Path(Dictionary<Node, int> depths, Node unMatchedRightSideNode, Node unMatchedLeftSideNode)
+        {
+            List<Node> path = new List<Node>();
+            Node currentNode = unMatchedRightSideNode;
+            while (currentNode != unMatchedLeftSideNode)
+            {
+                path.Add(currentNode);
+                foreach (Node node in currentNode.neighbours.Keys)
+                {
+                    if(depths.ContainsKey(node))
+                    {
+                        if (depths[node] == depths[currentNode] - 1)
+                        {
+                            currentNode = node;
+                        }
+                    }
+                }
+            }
+            path.Add(currentNode);
+            return path;
         }
         public (Dictionary<Node, int> depths, Node unMatchedRightSideNode, bool pathFound) BFS(Node unMatchedNode)
         {
