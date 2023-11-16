@@ -39,10 +39,6 @@ namespace MaximumMatchingProblem
                 {
                     List<Node> list = Path(result.depths, result.unMatchedRightSideNode, unMatchedNode);
                     UpdatePath(list);
-                    //foreach(Node node in list)
-                    //{
-                    //    Console.WriteLine(node.index);
-                    //}
                 }
             }
             return 1;
