@@ -17,7 +17,6 @@ namespace MaximumMatchingProblem
         {
             List<string> input = LoadingInput(inputPath);
             CreateGraph(input);
-            PrintFlows(leftNodes);
         }
         List<string> LoadingInput(string path)
         {

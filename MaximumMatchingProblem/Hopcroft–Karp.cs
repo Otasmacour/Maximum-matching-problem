@@ -11,14 +11,6 @@ namespace MaximumMatchingProblem
     {
         Stack<Node> unMatchedNodes;
         BipartiteGraph bipartiteGraph;
-        public HopcroftKarp(string inputPath)
-        {
-            bipartiteGraph = new BipartiteGraph(Directory.GetParent(Environment.CurrentDirectory)?.Parent?.FullName + inputPath);
-            unMatchedNodes = new Stack<Node>(bipartiteGraph.leftNodes);
-            Solve();
-            PrintFlows(bipartiteGraph.leftNodes);
-            
-        }
         void PrintFlows(List<Node> nodes)
         {
             foreach (Node node in nodes)
@@ -29,9 +21,11 @@ namespace MaximumMatchingProblem
                 }
             }
         }
-        public int Solve()
+        public int Solve(string inputPath)
         {
-            while(unMatchedNodes.Count > 0)
+            bipartiteGraph = new BipartiteGraph(Directory.GetParent(Environment.CurrentDirectory)?.Parent?.FullName + inputPath);
+            unMatchedNodes = new Stack<Node>(bipartiteGraph.leftNodes);
+            while (unMatchedNodes.Count > 0)
             {
                 Node unMatchedNode = unMatchedNodes.Pop();
                 var result = BFS(unMatchedNode);
@@ -41,7 +35,15 @@ namespace MaximumMatchingProblem
                     UpdatePath(list);
                 }
             }
-            return 1;
+            int numberOfMatchedRightSide = 0;
+            foreach(Node node in bipartiteGraph.rightNodes)
+            {
+                if(node.matched)
+                {
+                    numberOfMatchedRightSide++;
+                }
+            }
+            return numberOfMatchedRightSide;
         }
         static void UpdatePath(List<Node> nodes)
         {
